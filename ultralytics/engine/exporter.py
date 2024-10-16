@@ -798,9 +798,9 @@ class Exporter:
         build = builder.build_serialized_network if is_trt10 else builder.build_engine
         with build(network, config) as engine, open(f, "wb") as t:
             # Metadata
-            meta = json.dumps(self.metadata)
-            t.write(len(meta).to_bytes(4, byteorder="little", signed=True))
-            t.write(meta.encode())
+            # meta = json.dumps(self.metadata)
+            # t.write(len(meta).to_bytes(4, byteorder="little", signed=True))
+            # t.write(meta.encode())
             # Model
             t.write(engine if is_trt10 else engine.serialize())
 
